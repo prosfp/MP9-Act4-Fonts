@@ -30,3 +30,16 @@ Les directrius que podeu utilitzar per canviar l'aparença del text són les seg
 - letter-spacing
 - line-height
 - word-spacing
+
+## Github Pages
+
+Github ens permet publicar el nostre web i fer-lo visible. Un cop tinguis el teu projecte a Github, segueix aquestes instruccions:
+
+1. Ves a la pestanya de **Settings** del teu repositori
+2. Baixa fins a la secció de **Github Pages**
+3. A la branca de **Source** selecciona la branca de **main** (si és la que vols publicar) i prem el botó de **Save**
+4. Si baixes una mica més, et dirà la URL on es troba publicada la teva web. Si cliques, aniràs a la web publicada.
+
+## Lliurament
+
+Copia aquest enllaç i enganxa'l a l'activitat de Moodle corresponent.
