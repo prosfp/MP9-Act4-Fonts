@@ -17,9 +17,11 @@ jobs:
         run: |
           set -e
           # Validate HTML
-          curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary "@index.html" https://validator.w3.org/nu/?out=text | grep -v "The document validates according to the specified schema(s)." || \
-            { echo "HTML validation failed"; curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary "@index.html" https://validator.w3.org/nu/?out=gnu; exit 1; }
+          html_output=$(curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary "@index.html" https://validator.w3.org/nu/?out=text)
+          echo "$html_output"
+          echo "$html_output" | grep -q "There were errors" && { echo "HTML validation failed"; curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary "@index.html" https://validator.w3.org/nu/?out=gnu; exit 1; }
 
           # Validate CSS
-          curl -s -H "Content-Type: text/css; charset=utf-8" --data-binary "@styles.css" https://jigsaw.w3.org/css-validator/validator?profile=css3 -o /dev/null || \
-            { echo "CSS validation failed"; exit 1; }
+          css_output=$(curl -s -H "Content-Type: text/css; charset=utf-8" --data-binary "@styles.css" https://jigsaw.w3.org/css-validator/validator?profile=css3)
+          echo "$css_output"
+          echo "$css_output" | grep -q "Congratulations! No Error Found." || { echo "CSS validation failed"; exit 1; }
