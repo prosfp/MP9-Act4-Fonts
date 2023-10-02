@@ -14,4 +14,4 @@ jobs:
       - name: Validate HTML
         uses: anishathalye/proof-html@v2
         with:
-          directory: ./index.html
+          directory: ./site
