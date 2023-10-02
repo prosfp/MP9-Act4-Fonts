@@ -18,9 +18,9 @@ jobs:
           # Validate HTML
           wget --post-data "fragment=$(cat index.html)" -q -O - https://validator.w3.org/nu/ \
             | grep "The document validates according to the specified schema(s)." || \
-            echo "HTML validation failed"
+            { echo "HTML validation failed"; exit 1; }
 
           # Validate CSS
-          wget --post-data "text=$(cat style.css)" -q -O - https://jigsaw.w3.org/css-validator/validator \
+          wget --post-data "text=$(cat styles.css)" -q -O - https://jigsaw.w3.org/css-validator/validator \
             | grep "No error found" || \
-            echo "CSS validation failed"
+            { echo "CSS validation failed"; exit 1; }
