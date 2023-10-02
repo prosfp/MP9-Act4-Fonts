@@ -15,6 +15,7 @@ jobs:
 
       - name: Validate HTML and CSS
         run: |
+          set -e
           # Validate HTML
           curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary "@index.html" https://validator.w3.org/nu/?out=text | grep -v "The document validates according to the specified schema(s)." || \
             { echo "HTML validation failed"; curl -s -H "Content-Type: text/html; charset=utf-8" --data-binary "@index.html" https://validator.w3.org/nu/?out=gnu; exit 1; }
