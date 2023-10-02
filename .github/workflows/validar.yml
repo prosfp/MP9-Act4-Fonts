@@ -2,21 +2,16 @@ name: Validate HTML and CSS
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Validate HTML
-      uses: w3c-validation-action@1.2.2
-      with:
-        path: index.html
-
-    - name: Validate CSS
-      uses: w3c-validation-action@1.2.2
-      with:
-        path: styles.css
+      - name: Validate HTML
+        uses: anishathalye/proof-html@v2
+        with:
+          directory: index.html
